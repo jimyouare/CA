@@ -9,12 +9,14 @@ int main(int argc, const char * argv[]) {
     //pointer to b
     void*p=&b;
 
-    //print address of p
+    //print address of b since p points to this address
     printf("%x\n", p);
+    printf("Address of b: %p\n", &b);
 
-    //print content of pointer off casted long pointer of the next address to p
-    //pr
+    //pointer p is incremented and casted to a pointer of type long
     printf("%x\n",*(long*)p++);
+
+
     printf("%x\n",*(char*)p++);
     printf("%x\n",*(unsigned char*)p++);
     printf("%x\n", p);

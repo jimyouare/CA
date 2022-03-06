@@ -8,7 +8,6 @@ double numbers[3];
 
 // original
 // does not check if out of bounds
-// does not use *x which is a parameter
 // always returns 0
 int setValueAtOrg(double *x, int i, double value){
     x[i] = value;
@@ -16,11 +15,16 @@ int setValueAtOrg(double *x, int i, double value){
 }
 
 // improved
-
-void setValueAt(double *x, int i, double value){
-    if (i < 3){
+// no return type
+int setValueAt(double *x, int i, double value){
+    int arrBound = sizeof(x) / sizeof(double );
+    printf("Array Bounds %i\n", arrBound);
+    if (i < arrBound){
         *x = *x + i;
         *x = value;
+        return 0;
+    } else{
+        return 1;
     }
 
 }
@@ -31,18 +35,24 @@ int main(int argc, const char * argv[]) {
         numbers[i] = 423.34;
     }
 
+
+
     printf("before\n");
     for (int i = 0; i < 3; ++i) {
-        printf("Array is %f\n", numbers[i]);    }
+        printf("Array is %f\n", numbers[i]);
+    }
 
 
 
     double * num_pointer = & numbers;
     setValueAt(num_pointer,0,100.0002);
+    setValueAt(num_pointer,5,100.0002);
+
     printf("after\n");
 
-    for (int i = 0; i < 3; ++i) {
-        printf("Array is %f\n", numbers[i]);    }
+    for (int i = 0; i < 10; ++i) {
+        printf("Array is %f\n", numbers[i]);
+    }
 
     return 0;
 }
