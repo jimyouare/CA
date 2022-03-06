@@ -7,15 +7,22 @@
 double numbers[3];
 
 // original
+// does not check if out of bounds
+// does not use *x which is a parameter
+// always returns 0
 int setValueAtOrg(double *x, int i, double value){
     x[i] = value;
     return 0;
 }
 
 // improved
+
 void setValueAt(double *x, int i, double value){
-    *x = *x + i;
-    *x = value;
+    if (i < 3){
+        *x = *x + i;
+        *x = value;
+    }
+
 }
 
 int main(int argc, const char * argv[]) {
