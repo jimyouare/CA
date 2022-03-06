@@ -13,14 +13,12 @@ void test(){
 int main(int argc, const char * argv[]) {
     printf("Question 5\n");
     short x[4] = {1, 2, 3, 4};
-    // wrong pointer type
-    // int *px = x;
-    short *px = x;
+    int *px = x;
 
     //prints 1 1
     printf("%i %i\n", *x, *(short *)px);
     px++;
-    //prints 1 2
+    //prints 1 3
     printf("%i %i\n", *x, *(short *)px);
 
 

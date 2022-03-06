@@ -115,6 +115,22 @@ typedef unsigned short halfword;
 typedef unsigned char byte;
 
 /* TODO Task (c) add bitfields InstructionTypeI, InstructionTypeJ and InstructionTypeR here */
+struct {
+    unsigned int w;
+    unsigned int h;
+}InstructionTypeI;
+
+struct {
+    unsigned int w;
+    unsigned int h;
+}InstructionTypeJ;
+
+struct {
+    unsigned int w;
+    unsigned int h;
+}InstructionTypeR;
+
+
 
 /* TODO Task (d) add union Instruction here */
 

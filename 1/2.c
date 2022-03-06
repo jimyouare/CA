@@ -27,8 +27,6 @@ int main(int argc, const char * argv[]) {
         numbers[i] = 423.34;
     }
 
-
-
     printf("before\n");
     for (int i = 0; i < 3; ++i) {
         printf("Array is %f\n", numbers[i]);
