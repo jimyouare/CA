@@ -11,9 +11,8 @@ int increment(int *x){
 
 int incrementt(int *x){
     // incrementt recieves pointer to i
-    // i will be incremented by 1 but j not
-    // j will be 5
-    // i will be 6
+    // (*x)++ will be treated as *(x++)
+    // this means j will be 5 and i will be 6
     return (*x)++;
 }
 
