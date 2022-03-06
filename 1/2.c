@@ -13,10 +13,9 @@ int setValueAtOrg(double *x, int i, double value){
 }
 
 // improved
-int setValueAt(double *x, int i, double value){
+void setValueAt(double *x, int i, double value){
     *x = *x + i;
     *x = value;
-    return 0;
 }
 
 int main(int argc, const char * argv[]) {
