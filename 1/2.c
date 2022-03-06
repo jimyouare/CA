@@ -17,16 +17,8 @@ int setValueAtOrg(double *x, int i, double value){
 // improved
 // no return type
 int setValueAt(double *x, int i, double value){
-    int arrBound = sizeof(x) / sizeof(double );
-    printf("Array Bounds %i\n", arrBound);
-    if (i < arrBound){
         *x = *x + i;
         *x = value;
-        return 0;
-    } else{
-        return 1;
-    }
-
 }
 
 int main(int argc, const char * argv[]) {
