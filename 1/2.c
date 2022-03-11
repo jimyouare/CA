@@ -6,19 +6,25 @@
 
 double numbers[3];
 
-// original
-// does not check if out of bounds
-// always returns 0
-int setValueAtOrg(double *x, int i, double value){
-    x[i] = value;
-    return 0;
+// original with checks for array out of bound
+int setValueAtOrg(double *x, int i, double value, int l){
+    if (i <= l){
+        x[i] = value;
+        return 0;
+    } else{
+        return 1;
+    }
 }
 
 // improved
-// no return type
-int setValueAt(double *x, int i, double value){
+int setValueAt(double *x, int i, double value, int l){
+    if (i <= l){
         *x = *x + i;
         *x = value;
+        return 0;
+    } else{
+        return 1;
+    }
 }
 
 int main(int argc, const char * argv[]) {
@@ -33,11 +39,12 @@ int main(int argc, const char * argv[]) {
     }
 
 
-
-    double * num_pointer = & numbers;
-    setValueAt(num_pointer,0,100.0002);
-    setValueAt(num_pointer,5,100.0002);
-
+    double * num_pointer =  numbers;
+    int l = sizeof (numbers) / sizeof (double );
+    int x = setValueAtOrg(num_pointer,6,100.0002,l);
+    int y = setValueAt(num_pointer,6,100.0002,l);
+    printf("original: %d\n",x);
+    printf("changed: %d\n",y);
     printf("after\n");
 
     for (int i = 0; i < 10; ++i) {
