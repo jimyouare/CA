@@ -1,7 +1,7 @@
 /* TODO: Task (b) Please fill in the following lines, then remove this line.
  *
  * author(s):   Tobias Brunner
- *              Esther
+ *              Esther Hoeun Yu
  *
  * Please follow the instructions given in comments below. 
  * The file outputc1 shows what the output of this program 
