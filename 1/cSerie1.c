@@ -1,7 +1,7 @@
 /* TODO: Task (b) Please fill in the following lines, then remove this line.
  *
- * author(s):   FIRSTNAME LASTNAME 
- *              (FIRSTNAME2 LASTNAME2)
+ * author(s):   Tobias Brunner
+ *              Esther
  *
  * Please follow the instructions given in comments below. 
  * The file outputc1 shows what the output of this program 
@@ -115,30 +115,58 @@ typedef unsigned short halfword;
 typedef unsigned char byte;
 
 /* TODO Task (c) add bitfields InstructionTypeI, InstructionTypeJ and InstructionTypeR here */
-struct {
-    unsigned int w;
-    unsigned int h;
+typedef struct{
+    unsigned immediate: 16;
+    unsigned rt: 5;
+    unsigned rs: 5;
+    unsigned opcode: 6;
 }InstructionTypeI;
 
-struct {
-    unsigned int w;
-    unsigned int h;
+typedef struct {
+    unsigned address: 26;
+    unsigned opcode: 6;
 }InstructionTypeJ;
 
-struct {
-    unsigned int w;
-    unsigned int h;
+typedef struct {
+    unsigned funct: 6;
+    unsigned shamt: 5;
+    unsigned rd: 5;
+    unsigned rt: 5;
+    unsigned rs: 6;
+    unsigned opcode: 6;
 }InstructionTypeR;
 
 
-
 /* TODO Task (d) add union Instruction here */
+typedef union{
+    InstructionTypeI i;
+    InstructionTypeJ j;
+    InstructionTypeR r;
+}Instruction;
 
 /* TODO Task (e) add enumeration InstructionType here */
+typedef enum{
+    iType,
+    jType,
+    rType,
+    specialType
+}InstructionType;
 
 /* TODO Task (f) add structure Operation here */
+typedef struct {
+    char name[OP_NAME_LENGTH+1];
+    InstructionType type;
+    void (*operation)(Instruction*);
+}Operation;
+
+
 
 /* TODO Task (g) add structure Function here */
+typedef struct {
+    char name[FUNC_NAME_LENGTH+1];
+    InstructionType type;
+    void (*function)(Instruction*);
+}Function;
 
 /* Operation and function dispatcher */
 Operation operations[OPERATION_COUNT];
@@ -209,7 +237,25 @@ void initialize() {
 
 
 void printInstruction(Instruction *i) {
-/* TODO Task (h) complete printInstruction here */    
+/* TODO Task (h) complete printInstruction here */
+    Operation op = operations[i->i.opcode];
+    Function func = functions[i->r.funct];
+    switch (op.type){
+        case iType:
+            printf("%-4s %02i, %02i, 0x%04x\n", op.name, i->i.rt, i->i.rs, i->i.immediate );
+            break;
+        case jType:
+            printf("%-4s 0x%08x\n", op.name, i->j.address);
+            break;
+        case rType:
+            printf("%-4s %02i, %02i, %02i, 0x%04x\n", func.name, i->r.rd, i->r.rs, i->r.rt, i->r.shamt);
+            break;
+        case specialType:
+            printf("%-4s\n", op.name);
+            break;
+
+    }
+
 }
 
 void testPrint(word w) {
