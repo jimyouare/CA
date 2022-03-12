@@ -19,6 +19,7 @@ int main(int argc, const char * argv[]) {
     printf("%i %i\n", *x, *(short *)px);
     px++;
     //prints 1 3
+    //address px-1 could already be used and will be overwritten
     printf("%i %i\n", *x, *(short *)px);
 
 

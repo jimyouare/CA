@@ -12,18 +12,21 @@ int main(int argc, const char * argv[]) {
     // print address of b since p points to this address
     printf("%x\n", p);
 
-    // void pointer is cast to a pointer of type long and incremented after print
+    // pointer is cast to a pointer of type long and incremented after print
     // prints b
     printf("%x\n",*(long*)p++);
 
-    // void pointer p and cast to a pointer of type char and is incremented after print
-    // prints
+    // pointer p and cast to a pointer of type char which is promoted to int in the print statement
+    // and is incremented after print
+    // prints ffffffca
     printf("%x\n",*(char*)p++);
 
     //
+    // prints ca
     printf("%x\n",*(unsigned char*)p++);
 
     //
+    // prints e6222a03
     printf("%x\n", p);
 
 
