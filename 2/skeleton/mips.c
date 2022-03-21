@@ -1,6 +1,6 @@
 /* TODO: Task (b) Please fill in the following lines, then remove this line.
  *
- * author(s):   FIRSTNAME LASTNAME 
+ * author(s):   Tobias Brunner
  *              (FIRSTNAME2 LASTNAME2)
  * modified:    2010-01-07
  *
