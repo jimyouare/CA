@@ -102,22 +102,29 @@ void test_lui() {
 }
 
 /* LW */
-void test_lw() {
+void test_lw(Instruction *instruction) {
     /* TODO: Task (d) add test for LW here */
+	InstructionTypeI i = instruction-> i;
+	registers[i.rs] + (signed)signExtend(i.immediate));
 } 
 
 /* ORI */
-void test_ori() {
+void test_ori(Instruction *instruction) {
     /* TODO: Task (d) add test for ORI here */
+	InstructionTypeI i = instruction -> i;
+	registers[i.rt] = registers[i.rs] | zeroExtend(i.immediate);
 }
 
 /* SUB */
-void test_sub() {
+void test_sub(Instruction *instruction) {
     /* TODO: Task (d) add test for SUB here */
+	InstructionTypeI r = instruction -> r; 
+	registers[r.rd] = (signed)registers[r.rs] - (signed)registers[r.rt];
+	
 }
 
 /* SW */
-void test_sw() {
+void test_sw(Instruction *instruction) {
     word location1 = 0x00001000;
     word location2 = 0x00001004;
 	
