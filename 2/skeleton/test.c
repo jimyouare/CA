@@ -142,21 +142,20 @@ void test_ori() {
 /* SUB */
 void test_sub() {
     /* TODO: Task (d) add test for SUB here */
-    test_execute(create_itype_hex(0xFFFF, I_T0, I_ZERO, OC_ADDI));
-    assert(T0 == -1);
-    test_execute(create_itype_hex(1, I_T0, I_T0, OC_ADDI));
-    assert(T0 ==  0);
+    T0 = 1;
+    T1 = -1;
+    test_execute(create_rtype_hex(FC_SUB, 0x0000, I_T2, I_T1, I_T0, OC_SUB));
+    assert(T2 == 2);
 
-    test_execute(create_itype_hex(0xFFFF, I_T0, I_ZERO, OC_ADDI));
-    assert(T0 == -1);
-    test_execute(create_itype_hex(0xFFFF, I_T0, I_T0, OC_ADDI));
-    assert(T0 == -2);
+    T3 = -4;
+    T4 = 6;
+    test_execute(create_rtype_hex(FC_SUB, 0x0000, I_T5, I_T3, I_T4, OC_SUB));
+    assert(T5 == 10);
 
-    test_execute(create_itype_hex(3, I_T0, I_ZERO, OC_ADDI));
-    assert(T0 ==  3);
-    test_execute(create_itype_hex(1, I_T1, I_T0, OC_ADDI));
-    assert(T0 ==  3);
-    assert(T1 ==  4);
+    T6 = 4;
+    T7 = -6;
+    test_execute(create_rtype_hex(FC_SUB, 0x0000, I_T8, I_T6, I_T7, OC_SUB));
+    assert(T8 == -10);
 }
 
 /* SW */
