@@ -11,7 +11,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/cmdq/_projects/_CA/ex/3/cmake-build-debug"
+			"value" : "/Users/cmdq/_projects/_CA/ex/2/cmake-build-debug"
 		},
 		{
 			"name" : "3_IS_TOP_LEVEL",
@@ -35,7 +35,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/cmdq/_projects/_CA/ex/3"
+			"value" : "/Users/cmdq/_projects/_CA/ex/2"
 		},
 		{
 			"name" : "CMAKE_ADDR2LINE",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/cmdq/_projects/_CA/ex/3/cmake-build-debug"
+			"value" : "/Users/cmdq/_projects/_CA/ex/2/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -455,7 +455,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/cmdq/_projects/_CA/ex/3"
+			"value" : "/Users/cmdq/_projects/_CA/ex/2"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",

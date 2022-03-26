@@ -1,7 +1,7 @@
 /* TODO: Task (b) Please fill in the following lines, then remove this line.
  *
  * author(s):   Tobias Brunner
- *              (FIRSTNAME2 LASTNAME2)
+ *              Oliver Cathrein
  * modified:    2010-01-07
  *
  */
@@ -81,6 +81,10 @@ void printInstruction(Instruction *i) {
 /* Store a word to memory */
 void storeWord(word w, word location) {
 	/* TODO: Task (c) implement storeWord here */
+    memory[location + 3] = (w >> (0 * 8));
+    memory[location + 2] = (w >> (1 * 8));
+    memory[location + 1] = (w >> (2 * 8));
+    memory[location + 0] = (w >> (3 * 8));
 }
 
 /* Load a word from memory */
@@ -118,7 +122,7 @@ void initialize() {
 	assignOperation(OC_STOP,"stop", specialType, &stopOperation);
 	
 	assignOperation(OC_ADDI, "addi", iType, &mips_addi);
-  assignOperation(OC_JAL, "jal", jType ,&mips_jal);
+    assignOperation(OC_JAL, "jal", jType ,&mips_jal);
 	assignOperation(OC_LUI, "lui", iType ,&mips_lui);
 	assignOperation(OC_LW, "lw", iType, &mips_lw);
 	assignOperation(OC_ORI, "ori", iType, &mips_ori);
@@ -199,20 +203,30 @@ void stopOperation(Instruction *instruction) {
 /* ADD */
 void mips_add(Instruction *instruction) {
 	/* TODO: Task (e) implement ADD here */
+    InstructionTypeR r = instruction->r;
+    registers[r.rd] = (signed)registers[r.rs] + (signed)registers[r.rt];
 }
 
 /* ADDI */
 void mips_addi(Instruction *instruction) {
 	/* TODO: Task (e) implement ADDI here */
+    InstructionTypeI i = instruction->i;
+    registers[i.rt] = registers[i.rs] + (signed)signExtend(i.immediate);
 }
 
 /* JAL */
 void mips_jal(Instruction *instruction) {
-	/* TODO: Task (e) implement JAL here */}
+	/* TODO: Task (e) implement JAL here */
+    InstructionTypeJ j = instruction->j;
+    RA = pc;
+    pc = (pc & 0xf0000000) | (j.address << 2);
+}
 
 /* LUI */
 void mips_lui(Instruction *instruction) {
 	/* TODO: Task (e) implement LUI here */
+    InstructionTypeI i = instruction->i;
+    registers[i.rt] = i.immediate << 16;
 }
 
 /* LW */
@@ -236,5 +250,7 @@ void mips_sub(Instruction *instruction) {
 /* SW */
 void mips_sw(Instruction *instruction) {
 	/* TODO: Task (e) implement SW here */
+    InstructionTypeI i = instruction->i;
+    storeWord(registers[i.rt], registers[i.rs] + (signed)signExtend(i.immediate));
 }
 

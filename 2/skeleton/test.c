@@ -1,7 +1,7 @@
 /* TODO: Task (b) Please fill in the following lines, then remove this line.
  *
- * author(s):   FIRSTNAME LASTNAME 
- *              (FIRSTNAME2 LASTNAME2)
+ * author(s):   Tobias Brunner
+ *              Oliver Cathrein
  * modified:    2010-01-07
  *
  */
@@ -74,21 +74,21 @@ void test_jal() {
 
         pc = 0x00000000;
         pcSaved = pc;
-	test_execute(create_jtype_hex(0x0001, OC_JAL));
-	assert(RA == pcSaved + 4);
+	    test_execute(create_jtype_hex(0x0001, OC_JAL));
+	    assert(RA == pcSaved + 4);
         assert(pc == 4);
 
         /* The following test is executed manually as the desired pc is outside the memory,
          * i.e. the test needs to bypass actually storing the instruction in the memory.
          */
-	initialize();
+	    initialize();
         pc = 0xAF000000;
-	pcSaved = pc;
+	    pcSaved = pc;
         w = create_jtype_hex(0x0001, OC_JAL);
         instruction = (Instruction *) &w;
         pc += 4;
        	operations[instruction->i.opcode].operation(instruction);
-	assert(RA == pcSaved + 4);
+	    assert(RA == pcSaved + 4);
         assert(pc == 0xA0000004);
 }
 
@@ -104,16 +104,59 @@ void test_lui() {
 /* LW */
 void test_lw() {
     /* TODO: Task (d) add test for LW here */
+    word w1 = 0xAAAAAAAA;
+    word w2 = 0xBBBBBBBB;
+
+    word location1 = 0x00000102;
+    word location2 = 0x00000096;
+
+    T0 = location1;
+    storeWord(w1, T0);
+    test_execute(create_itype_hex(0, I_T1, I_T0, OC_LW));
+    assert(T1 == w1);
+
+    T1 = location2;
+    storeWord(w2, T1);
+    test_execute(create_itype_hex(0, I_T2, I_T1, OC_LW));
+    assert(T2 == w2);
 } 
 
 /* ORI */
 void test_ori() {
     /* TODO: Task (d) add test for ORI here */
+    word w1 = 0x00001111;
+    word w2 = 0x00000000;
+
+    unsigned immediate1 = 0x11110000;
+    unsigned immediate2 = 0x01101010;
+
+    T0 = w1;
+    T1 = w2;
+    test_execute(create_itype_hex(immediate1, I_T1, I_T0, OC_ORI));
+    assert(T1 == 0x11111111);
+
+    test_execute(create_itype_hex(immediate2, I_T1, I_T0, OC_ORI));
+    assert(T1 == 0x01101010);
 }
 
 /* SUB */
 void test_sub() {
     /* TODO: Task (d) add test for SUB here */
+    test_execute(create_itype_hex(0xFFFF, I_T0, I_ZERO, OC_ADDI));
+    assert(T0 == -1);
+    test_execute(create_itype_hex(1, I_T0, I_T0, OC_ADDI));
+    assert(T0 ==  0);
+
+    test_execute(create_itype_hex(0xFFFF, I_T0, I_ZERO, OC_ADDI));
+    assert(T0 == -1);
+    test_execute(create_itype_hex(0xFFFF, I_T0, I_T0, OC_ADDI));
+    assert(T0 == -2);
+
+    test_execute(create_itype_hex(3, I_T0, I_ZERO, OC_ADDI));
+    assert(T0 ==  3);
+    test_execute(create_itype_hex(1, I_T1, I_T0, OC_ADDI));
+    assert(T0 ==  3);
+    assert(T1 ==  4);
 }
 
 /* SW */

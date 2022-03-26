@@ -6,5 +6,5 @@ set(CMAKE_C_STANDARD 11)
 include_directories(skeleton)
 
 add_executable(3
-
-        1.c)
+        skeleton/mips.c
+        )

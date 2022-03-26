@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "3::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-3-Debug-2075fc8a266a7665c3ce.json",
+					"jsonFile" : "target-3-Debug-1f867a5f38a3077bd808.json",
 					"name" : "3",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/cmdq/_projects/_CA/ex/3/cmake-build-debug",
-		"source" : "/Users/cmdq/_projects/_CA/ex/3"
+		"build" : "/Users/cmdq/_projects/_CA/ex/2/cmake-build-debug",
+		"source" : "/Users/cmdq/_projects/_CA/ex/2"
 	},
 	"version" : 
 	{
