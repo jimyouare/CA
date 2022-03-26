@@ -124,19 +124,21 @@ void test_lw() {
 /* ORI */
 void test_ori() {
     /* TODO: Task (d) add test for ORI here */
-    word w1 = 0x00001111;
-    word w2 = 0x00000000;
+    word w1 = 0x11110000;
+    word w2 = 0x00001000;
+    word w3 = 0x10000111;
 
-    unsigned immediate1 = 0x11110000;
+    unsigned immediate1 = 0x00001111;
     unsigned immediate2 = 0x01101010;
 
     T0 = w1;
     T1 = w2;
+    T2 = w3;
     test_execute(create_itype_hex(immediate1, I_T1, I_T0, OC_ORI));
     assert(T1 == 0x11111111);
 
-    test_execute(create_itype_hex(immediate2, I_T1, I_T0, OC_ORI));
-    assert(T1 == 0x01101010);
+    test_execute(create_itype_hex(immediate2, I_T2, I_T0, OC_ORI));
+    assert(T2 == 0x10000111);
 }
 
 /* SUB */
