@@ -134,6 +134,7 @@ void test_ori() {
     T0 = w1;
     T1 = w2;
     T2 = w3;
+
     test_execute(create_itype_hex(immediate1, I_T1, I_T0, OC_ORI));
     assert(T1 == 0x11111111);
 
