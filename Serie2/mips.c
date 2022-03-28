@@ -1,9 +1,9 @@
 /* TODO: Task (b) Please fill in the following lines, then remove this line.
  *
- * author(s):   FIRSTNAME LASTNAME 
- *              (FIRSTNAME2 LASTNAME2)
- * modified:    2010-01-07
- *
+ * author(s):   Hoeun Yu EU-
+ 		Patrick Stöckli 16-942-468
+ * modified:    2022-03-28
+
  */
 
 #include <stdlib.h>
@@ -81,6 +81,10 @@ void printInstruction(Instruction *i) {
 /* Store a word to memory */
 void storeWord(word w, word location) {
 	/* TODO: Task (c) implement storeWord here */
+	memory[location] = (w >> (8*3)) & 0xFF;
+	memory[location + 1] = (w >> (8*2)) & 0xFF;
+	memory[location + 2] = (w >> (8*1)) & 0xFF;
+	memory[location + 3] = w & 0xFF;
 }
 
 /* Load a word from memory */
@@ -198,21 +202,33 @@ void stopOperation(Instruction *instruction) {
 
 /* ADD */
 void mips_add(Instruction *instruction) {
-	/* TODO: Task (e) implement ADD here */
+	InstructionTypeR r = instruction->r;
+	registers[r.rd] = registers[r.rs] + registers[r.rt];
 }
 
 /* ADDI */
 void mips_addi(Instruction *instruction) {
 	/* TODO: Task (e) implement ADDI here */
+	InstructionTypeI i = instruction->i;
+	registers[i.rt] = registers[i.rs] + (signed)signExtend(i.immediate);
+
 }
 
 /* JAL */
 void mips_jal(Instruction *instruction) {
-	/* TODO: Task (e) implement JAL here */}
+	/* TODO: Task (e) implement JAL here */
+	InstructionTypeJ j = instruction->j;	
+	RA = pc;	
+	pc = (pc & 0xf0000000) | (((signed)signExtend(j.address)) <<2);	 	
+
+}
 
 /* LUI */
 void mips_lui(Instruction *instruction) {
 	/* TODO: Task (e) implement LUI here */
+	InstructionTypeI i = instruction->i;
+	registers[i.rt] = ((signed)signExtend(i.immediate)) << 16;
+	
 }
 
 /* LW */
@@ -236,5 +252,7 @@ void mips_sub(Instruction *instruction) {
 /* SW */
 void mips_sw(Instruction *instruction) {
 	/* TODO: Task (e) implement SW here */
+	InstructionTypeI i = instruction->i;
+	storeWord(registers[i.rt], registers[i.rs]); 
 }
 
