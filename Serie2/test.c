@@ -1,7 +1,7 @@
 /* TODO: Task (b) Please fill in the following lines, then remove this line.
  *
  * author(s):   Hoeun Yu EU-
- *              Patrick
+ *              Patrick Stöckli 16942468
  * modified:    28.03.2022
  *
  */
