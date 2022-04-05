@@ -130,6 +130,23 @@ void initializeMemory() {
 /* Load a file to memory */
 void loadFile(char* filename) {
     /* TODO: Task (d) implement loadFile */
+    FILE* file = fopen(filename,"r");
+    word wordlocation = 0;
+    word word = 0;
+    byte buf[4];
+
+    while(!feof(file)){
+
+        fread(buf, 1, 4, file);
+
+        word = buf[3];
+        word += buf[2] << 1*8;
+        word += buf[1] << 2*8;
+        word += buf[0] << 3*8;
+
+        storeWord(word, wordlocation);
+        wordlocation += 4;
+    }
 }
 
 /* ========================================================================== */

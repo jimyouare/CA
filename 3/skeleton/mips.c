@@ -33,6 +33,11 @@ Function functions[FUNCTION_COUNT];
 
 void error(const char *functionName, const char *fileName, int lineNumber, char *message, ...) {
    /* TODO: Task (e) implement error */
+    printf("ERROR! %s in File %s has a problem at line %d \n", functionName, fileName, lineNumber);
+    va_list list;
+    va_start(list, message);
+    vprintf(message,list);
+    exit(EXIT_FAILURE);
 }
 
 
