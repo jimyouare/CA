@@ -26,7 +26,7 @@
 	# All memory structures are placed after the .data assembler directive
 	.data
 
-	value: .word 2  # this is the initial value of the countdown (seconds)
+	value: .word 60  # this is the initial value of the countdown (seconds)
 
 	start: .asciiz "COUNTDOWN STARTED\n"
 
@@ -40,8 +40,8 @@
 	# and assigns that memory location an initial value
 	# (or a comma separated list of initial values)
 	# 
-	# 	      0     1     2     3     4     5     6     7     8     9			#used for point
-	digits: .byte 0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F,  0x80 
+	# 	      0     1     2     3     4     5     6     7     8     9			
+	digits: .byte 0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F
 
 	# All program code is placed after the .text assembler directive
 	.text 		
@@ -121,34 +121,7 @@
 
 			j blink
 
-		#blink:
-			#add $t0, $zero, $zero
-
-			#li $a0, 0xA
-			#li $a1, 0xFFFF0010
-			#jal write_digit
-
-			#li $a0, 0xA
-			#li $a1, 0xFFFF0011
-			#jal write_digit
-
-			#li $v0, 32
-			#li $a0, 300		
-			#syscall	
-
-			#li $a0, 0x3F
-			#li $a1, 0xFFFF0010
-			#jal write_digit
-
-			#li $a0, 0x3F
-			#li $a1, 0xFFFF0011
-			#jal write_digit
-
-			#li $v0, 32
-			#li $a0, 300		
-			#syscall	
-
-			#j blink
+		
 
 		
 		# 1. Turn display off
