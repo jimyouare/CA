@@ -138,7 +138,6 @@ void loadFile(char* filename) {
     while(!feof(file)){
 
         fread(buf, 1, 4, file);
-
         word = buf[3];
         word += buf[2] << 1*8;
         word += buf[1] << 2*8;

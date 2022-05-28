@@ -1,0 +1,61 @@
+# BASIC INTERRUPT EXAMPLE
+#
+# 1. Open the Digital Lab Sim Tool
+# 2. Click on Connect to MIPS
+# 3. Compile and run
+# 4. Press a button; if you press key 0, it will print the keycode to the terminal
+
+
+# the data section; not needed in this example
+.data
+	
+	keypress: .asciiz "key pressed"
+
+
+
+# main program
+.text
+	li $t0, 0xFFFF0012	# this address holds a byte of control bits that allow us to access the keys in Digital Lab Sim
+	li $t1, 0x81		# we enable interrupts by activating bit 7 on row 1, i.e., in binary: 1000 0001
+	sb $t1, 0($t0)
+
+	loop:   		# infinite loop to demonstrate interrupts
+				# this is where you would implement the remaining part of your program
+	j loop 
+
+
+# INTERRUPT HANDLER (only runs when a key is pressed).
+# 0x80000180 is an address that signifies the location of the instructions in memory. This address is specific to MARS.
+# What follows are the kernel mode instructions.
+.ktext 0x80000180 
+
+ 	move $k0, $v0   # Save $v0 value
+   	move $k1, $a0   # Save $a0 value
+	
+	# We want to select row 1 of the keyboard
+	# We need to write the number of the row to the address 0xFFFF0012, then we can read out which key in that row was pressed
+	li $t0, 0xFFFF0012	
+	li $t1, 0x81		
+	sb $t1, 0($t0)
+	
+	# Check if a key was pressed in row 1 (which we selected previously)
+	# key 0 (row 1, col 1): 0x11
+	# key 1 (row 1, col 2): 0x21
+	# key 2 (row 1, col 3): 0x41
+	# key 3 (row 1, col 4): 0x81
+	# same logic applies to other rows/cols
+	lb $t0, 0xFFFF0014 
+	li $t1, 0x11
+	beq $t0, $t1, print  	# check if it's key 0, and print the code
+
+	j exit_interrupt
+	
+	print:
+	lb   $a0, 0xFFFF0014
+   	li   $v0, 34    	# print an integer as hexadecimal code
+   	syscall
+   	
+   	exit_interrupt:
+   	move $v0, $k0   	# Restore $v0
+	move $a0, $k1   	# Restore $a0
+	eret			# exit the interrupt handler and return to main program
