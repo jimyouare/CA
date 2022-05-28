@@ -6,8 +6,9 @@
 
 - Der Kurs bietet eine kurze Einführung in die Programmiersprache C und fährt dann fort mit der MIPS-Assemblersprache, der Analyse der Computerleistung, der Beschreibung der Computerarchitektur und fortgeschrittenen Techniken zur Leistungssteigerung wie Pipelining, Umgang mit Gefahren, Speicherarchitekturen und E/A-Systeme.
 
-## Was ist ein Buffer Overflow? Können Sie ein Beispiel geben, wann dies auftreten kann?
+![rechnerarchitektur prüfung](https://user-images.githubusercontent.com/78131082/170840219-a3236f6b-0412-4a60-937d-af528556ecea.jpeg)
 
+## Was ist ein Buffer Overflow? Können Sie ein Beispiel geben, wann dies auftreten kann?
 
 [Rechnerarchitektur Prüfung Aufhänger](https://youtu.be/UnNqi7lqUBw)
  
