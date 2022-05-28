@@ -9,11 +9,12 @@
 ## Was ist ein Buffer Overflow? Können Sie ein Beispiel geben, wann dies auftreten kann?
 
 
+[Rechnerarchitektur Prüfung Aufhänger](https://youtu.be/UnNqi7lqUBw)
  
-https://ilias.unibe.ch/goto_ilias3_unibe_fold_1272242.html
+[Rechnerarchitektur Alte Prüfungen](https://ilias.unibe.ch/goto_ilias3_unibe_fold_1272242.html)
 
-https://www.electronics-tutorials.ws/de/kombinations/binaraddierer.html
+[Binaraddierer](https://www.electronics-tutorials.ws/de/kombinations/binaraddierer.html)
 
-https://www.dcc.fc.up.pt/~ricroc/aulas/1920/ac/apontamentos/P04_encoding_mips_instructions.pdf
+[encoding_mips_instructions](https://www.dcc.fc.up.pt/~ricroc/aulas/1920/ac/apontamentos/P04_encoding_mips_instructions.pdf)
 
-https://studyflix.de/informatik/zweierkomplement-1781
+[zweierkomplement](https://studyflix.de/informatik/zweierkomplement-1781)
