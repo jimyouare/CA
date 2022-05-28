@@ -8,3 +8,10 @@
 
 
  
+https://ilias.unibe.ch/goto_ilias3_unibe_fold_1272242.html
+
+https://www.electronics-tutorials.ws/de/kombinations/binaraddierer.html
+
+https://www.dcc.fc.up.pt/~ricroc/aulas/1920/ac/apontamentos/P04_encoding_mips_instructions.pdf
+
+https://studyflix.de/informatik/zweierkomplement-1781
