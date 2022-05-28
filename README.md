@@ -6,6 +6,8 @@
 
 - Der Kurs bietet eine kurze Einführung in die Programmiersprache C und fährt dann fort mit der MIPS-Assemblersprache, der Analyse der Computerleistung, der Beschreibung der Computerarchitektur und fortgeschrittenen Techniken zur Leistungssteigerung wie Pipelining, Umgang mit Gefahren, Speicherarchitekturen und E/A-Systeme.
 
+## Was ist ein Buffer Overflow? Können Sie ein Beispiel geben, wann dies auftreten kann?
+
 
  
 https://ilias.unibe.ch/goto_ilias3_unibe_fold_1272242.html
