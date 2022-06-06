@@ -1,7 +1,7 @@
 # Computer Architecture 
 
 <a href="https://www.youtube.com/watch?v=7RZUChVggvk">
-    <img src="https://opendc.org/img/logo.png" alt="OpenDC logo" title="OpenCA" align="right" height="100" />
+    <img src="https://github.com/Estheryu991/CA-computer-architecture-RA_Rechnerarchitektur/blob/master/Folien/.image/ddca.svg" alt="OpenDC logo" title="OpenCA" align="right" height="100" />
 </a>
 
 
@@ -12,6 +12,11 @@
 - Der Kurs bietet eine kurze Einführung in die Programmiersprache C und fährt dann fort mit der MIPS-Assemblersprache, der Analyse der Computerleistung, der Beschreibung der Computerarchitektur und fortgeschrittenen Techniken zur Leistungssteigerung wie Pipelining, Umgang mit Gefahren, Speicherarchitekturen und E/A-Systeme.
 
 ![rechnerarchitektur prüfung](https://user-images.githubusercontent.com/78131082/170840219-a3236f6b-0412-4a60-937d-af528556ecea.jpeg)
+
+<a href="[https://www.youtube.com/watch?v=7RZUChVggvk](https://www.youtube.com/watch?v=a1w2BDYhni0)">
+    
+    <img src="[https://github.com/Estheryu991/CA-computer-architecture-RA_Rechnerarchitektur/blob/master/Folien/.image/ddca.svg](https://user-images.githubusercontent.com/78131082/170840219-a3236f6b-0412-4a60-937d-af528556ecea.jpeg)" alt="OpenRechnerarchitektur" title="OpenCA" align="right" height="100" />
+</a>
 
 ## Was ist ein Buffer Overflow? Können Sie ein Beispiel geben, wann dies auftreten kann?
 
