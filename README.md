@@ -1,6 +1,6 @@
 # Computer Architecture 
 
-<a href="https://opendc.org/">
+<a href="https://www.youtube.com/watch?v=7RZUChVggvk">
     <img src="https://opendc.org/img/logo.png" alt="OpenDC logo" title="OpenCA" align="right" height="100" />
 </a>
 
