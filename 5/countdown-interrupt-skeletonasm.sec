@@ -1,0 +1,119 @@
+# SKELETON
+#
+# -------------------------------------------------------------------------------------
+# Series 5 - MIPS Programming Part 2 - Countdown Clock with Keyboard Interrupts
+# 
+# Group members:
+# Esther Hoeun Yu EU-110063653 ; Patrick 16-942-468
+# 
+# Individualised code by:
+# Hoeun Yu
+#
+# IMPORTANT: Provide instructions how to use the program.
+# - Describe which button does what
+# - If you added extra stuff, mention it here
+# 
+# Notes:
+# We provide hints and guidance in the comments below and
+# strongly encourage you to follow the skeleton.
+# However, you are free to change the code as you like.
+# 
+# -------------------------------------------------------------------------------------
+
+# Declare main as a global function
+.globl main 
+	
+# All memory structures are placed after the .data assembler directive
+.data
+
+initial:	.word 60	# this is the initial value of the countdown (seconds)
+value: 		.word 60  	# this is the current value of the countdown (seconds)
+
+start: 		.asciiz "COUNTDOWN STARTED\n"
+
+# TODO: update with your solution
+#	      0     1     2     3     4     5     6     7     8     9
+digits: .byte 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F
+
+start_pressed: .byte 0x0
+
+# All program code is placed after the .text assembler directive
+.text 		
+
+# The label 'main' represents the starting point
+main:
+
+
+# *************************************************************************************
+# TASK (c): Implement the interrupt handling for a key press that starts the countdown. 
+# 1. Set the interrupt bit on the row of buttons you want to use (see demo code).
+# 2. Implement the interrupt handler (see section at the bottom).
+# 3. Add a waiting loop here and branch out if the "start_pressed" byte is != 0.
+# *************************************************************************************	
+
+	
+
+
+	# waiting loop until start key pressed (key 0)
+	wait_loop:
+	
+	j wait_loop
+	
+
+	# print a start message to stdout
+	li      $v0, 4       	
+	la      $a0, start  	
+	syscall             	
+	
+	
+# *************************************************************************************
+# MAIN CODE FOR COUNTDOWN: Add your implementation from Series 4 here. 
+# If you don't have a working code, ask the teaching assistants for help.
+# You are not allowed to copy someone else's code.
+# 
+# You may have to slightly adapt it to work with the interrupt handling, but no 
+# major changes should be required. Most of the added functionality can be implemented 
+# at the start of the program and in the interrupt  handler.
+# *************************************************************************************	
+	
+	
+	
+	# TODO: paste your solution from Serie 4
+	
+	
+
+# *************************************************************************************
+# Tasks (c), (d), (e): Take a look at the demo code for a simple interrupt handler 
+# and adapt/extend it. 
+#
+# *************************************************************************************
+
+# INTERRUPT HANDLER (only runs when a key is pressed).
+# 0x80000180 is an address that signifies the location of the instructions in memory. This address is specific to MARS.
+# What follows are the kernel mode instructions.
+.ktext 0x80000180 
+
+	# TODO: Don't forget to save your registers
+	addi $sp, $sp, -8
+	sw  $t0, 0($sp)
+	sw  $t1, 4($sp)
+
+ 	move $k0, $v0   # Save $v0 value
+   	move $k1, $a0   # Save $a0 value
+
+
+	# TODO: paste your interrupt code here. See the example program on ILIAS on how to access the keys.
+
+
+   	exit_interrupt:
+   	move $v0, $k0   	# Restore $v0
+	move $a0, $k1   	# Restore $a0
+	
+	
+	# TODO: Don't forget to restore registers before return
+	lw  $t0, 0($sp)  	
+	lw  $t1, 4($sp)
+	addi $sp, $sp, 8
+	
+	eret			# exit the interrupt handler and return to main program
+	
